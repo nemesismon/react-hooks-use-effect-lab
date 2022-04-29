@@ -6,15 +6,15 @@ function Question({ question, onAnswered }) {
   // add useEffect code
   
   useEffect(() => {
+    
     const timer = setTimeout(() => {
       setTimeRemaining(timeRemaining - 1);
       }, 1000);
 
-    return function cleanup() {
-      clearInterval();
-    };
-
-
+    if (timeRemaining === 0) {
+        clearTimeout(timer);
+        handleAnswer(false);
+    } 
   });
 
   //
